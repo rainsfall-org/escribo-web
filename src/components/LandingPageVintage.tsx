@@ -219,13 +219,13 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Main hero content */}
-        <div className="absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] px-4">
+        <div className="absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] lg:max-w-[800px] xl:max-w-[700px] px-4">
           <div className="content-stretch flex flex-col gap-[12px] md:gap-[20px] items-start justify-start leading-[0] relative shrink-0 text-center w-full">
             <div className="font-montserrat font-normal relative shrink-0 text-[#f4e7d1] text-[16px] md:text-[20px] w-full">
               <p className="leading-[normal]">ESCRIBO AI</p>
             </div>
             <div className="flex flex-col font-avigea justify-center not-italic relative shrink-0 text-[#1c150b] text-[0px] w-full">
-              <div className="leading-[1.15] text-[32px] md:text-[80px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
+              <div className="leading-[1.15] text-[28px] md:text-[70px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
                 <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}>Helping every </span>
                 <span className="font-avigea italic text-[#988361]" style={{ fontWeight: 400, fontStyle: 'italic' }}>
                   {currentText}
@@ -243,7 +243,8 @@ export default function LandingPageVintage() {
                     }}
                   ></span>
                 </span>
-                <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}> bring ideas to life.</span>
+                <br />
+                <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}>bring ideas to life.</span>
               </div>
             </div>
           </div>
@@ -264,7 +265,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Large "Escribo AI" text at bottom */}
-        <div className="absolute bottom-[-15px] md:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[80px] sm:text-[120px] md:text-[200px] lg:text-[320px] text-nowrap z-10" style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
+        <div className="absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[80px] sm:text-[120px] md:text-[200px] lg:text-[320px] text-nowrap z-10" style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
           <p className="whitespace-pre">Escribo AI</p>
         </div>
       </div>
@@ -454,7 +455,7 @@ export default function LandingPageVintage() {
       </div>
 
       {/* Burnt Orange Section */}
-      <div className="relative w-full h-[1440px] bg-[#A16631]">
+      <div className="relative w-full h-[1400px] md:h-[1300px] min-[1400px]:h-[1200px] bg-[#A16631]">
         {/* Dust texture overlay */}
         <div
           className="absolute inset-0 w-full h-full opacity-30"
@@ -466,12 +467,12 @@ export default function LandingPageVintage() {
         />
 
         {/* Features label - centered at top */}
-        <div className="absolute top-16 md:top-22 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center">
+        <div className="absolute top-8 md:top-12 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center">
           Features
         </div>
 
         {/* Content */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-[120px] pt-[100px] md:pt-[120px] pb-[40px] md:pb-[60px]">
+        <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-[120px] pt-[60px] md:pt-[80px] pb-[40px] md:pb-[60px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center lg:items-start justify-center max-w-7xl w-full">
             {/* Left side - Text content with slides */}
             <div className="flex-1 max-w-[600px] relative">
@@ -548,8 +549,62 @@ export default function LandingPageVintage() {
               </div>
             </div>
 
-            {/* Right side - Images with slides */}
-            <div className="flex-1 max-w-[700px] hidden lg:block relative h-[750px]">
+            {/* Mobile - Images below button */}
+            <div className="block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6">
+              {/* Slide 1: Chatbox images */}
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+                {/* Rough chatbox - top */}
+                <div className="relative w-full h-[200px] mb-4" style={{ aspectRatio: '149/86' }}>
+                  <Image
+                    src={imgRoughChatbox}
+                    alt="Paste your Rough Draft or Story Idea"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Refined chatbox - bottom */}
+                <div className="relative w-full h-[240px]">
+                  <Image
+                    src={imgRefinedChatbox}
+                    alt="AI will automatically create organized chapters"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Slide 2: Document preview */}
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+                <div className="flex items-center justify-center h-[400px]">
+                  <div className="relative w-[280px] h-[336px]">
+                    <Image
+                      src={imgDocument}
+                      alt="Book preview with formatted pages"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Slide 3: Creative Spark imagery */}
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+                <div className="flex items-center justify-center h-[400px]">
+                  <div className="relative w-[320px] h-[320px]">
+                    <Image
+                      src={imgSparkImagery}
+                      alt="Creative spark illustration with structure banner and spiral designs"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop - Images with slides */}
+            <div className="flex-1 max-w-[700px] hidden min-[1400px]:block relative h-[750px]">
               {/* Slide 1: Chatbox images */}
               <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
                 {/* Rough chatbox - top */}
@@ -635,6 +690,16 @@ export default function LandingPageVintage() {
           {/* FAQ Section with decorative books */}
           <div className="relative max-w-4xl w-full">
             {/* Decorative book - top left */}
+            <div className="absolute -left-8 md:-left-16 lg:-left-25 -top-8 md:-top-12 lg:-top-20 block" style={{ width: '120px', height: '115px', flexShrink: 0 }}>
+              <Image
+                src={imgBook}
+                alt="Decorative book"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Decorative book - top left - larger for desktop */}
             <div className="absolute -left-25 -top-20 hidden lg:block" style={{ width: '197.117px', height: '192.038px', flexShrink: 0 }}>
               <Image
                 src={imgBook}
@@ -644,7 +709,20 @@ export default function LandingPageVintage() {
               />
             </div>
 
-            {/* Decorative book - bottom right */}
+            {/* Decorative book - bottom right - mobile */}
+            <div
+              className="absolute -right-8 md:-right-16 lg:hidden -bottom-8 md:-bottom-12 z-0 block"
+              style={{ width: '180px', height: '175px', transform: 'rotate(60deg)', flexShrink: 0 }}
+            >
+              <Image
+                src={imgBook}
+                alt="Decorative book"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Decorative book - bottom right - desktop */}
             <div
               className="absolute -right-55 -bottom-42 hidden lg:block z-0"
               style={{ width: '349.573px', height: '337.771px', transform: 'rotate(60deg)', flexShrink: 0 }}
@@ -804,8 +882,8 @@ export default function LandingPageVintage() {
         <div className="absolute bottom-[20px] content-stretch flex flex-col gap-[40px] md:gap-[60px] items-center justify-start py-[40px] md:py-[60px] px-4 w-full z-20">
           {/* Banner Text */}
           <div className="content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start relative shrink-0 w-full max-w-[1028px]">
-            <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[32px] md:text-[60px] lg:text-[80px] text-center w-full">
-              <p>Ready to write without limits? Start Today!</p>
+            <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[28px] md:text-[50px] lg:text-[70px] text-center w-full">
+              <p>Ready to write without limits?<br />Start Today!</p>
             </div>
             <div className="bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px]">
               <Button buttonText="Register" />
