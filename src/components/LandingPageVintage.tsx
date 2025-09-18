@@ -467,7 +467,7 @@ export default function LandingPageVintage() {
         />
 
         {/* Features label - centered at top */}
-        <div className="absolute top-8 md:top-12 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center">
+        <div className="absolute top-20 md:top-25 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center">
           Features
         </div>
 
@@ -477,7 +477,7 @@ export default function LandingPageVintage() {
             {/* Left side - Text content with slides */}
             <div className="flex-1 max-w-[600px] relative">
               {/* Slide 1: Binder & Outliner */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Main heading */}
                 <div className="mb-4 md:mb-6 mt-8 md:mt-20 text-center lg:text-left">
                   <h2 className="font-avigea text-[32px] md:text-[60px] lg:text-[80px] leading-[1.15] text-[#f4e7d1] mb-2 md:mb-4">
@@ -501,7 +501,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 2: Book Preview */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Main heading */}
                 <div className="mb-4 md:mb-6 mt-8 md:mt-20 text-center lg:text-left">
                   <h2 className="font-avigea text-[32px] md:text-[60px] lg:text-[80px] leading-[1.15] text-[#f4e7d1] mb-2 md:mb-4">
@@ -525,7 +525,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 3: Creative Spark */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Main heading */}
                 <div className="mb-4 md:mb-6 mt-8 md:mt-20 text-center lg:text-left">
                   <h2 className="font-avigea text-[32px] md:text-[60px] lg:text-[80px] leading-[1.15] text-[#f4e7d1] mb-2 md:mb-4">
@@ -552,7 +552,7 @@ export default function LandingPageVintage() {
             {/* Mobile - Images below button */}
             <div className="block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6">
               {/* Slide 1: Chatbox images */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Rough chatbox - top */}
                 <div className="relative w-full h-[200px] mb-4" style={{ aspectRatio: '149/86' }}>
                   <Image
@@ -575,7 +575,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 2: Document preview */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[280px] h-[336px]">
                     <Image
@@ -589,7 +589,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 3: Creative Spark imagery */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[320px] h-[320px]">
                     <Image
@@ -725,7 +725,7 @@ export default function LandingPageVintage() {
                       What is Escribo AI and how does it help writers?
                     </button>
                     {expandedFAQ === 0 && (
-                      <div className="font-montserrat font-normal text-[14px] md:text-[16px] text-[#53442d] leading-[1.15] animate-fade-in">
+                      <div className="font-montserrat font-normal text-[14px] md:text-[16px] text-[#53442d] leading-[1.15] transition-all duration-300 ease-in-out">
                         <p>Escribo AI is an intelligent writing assistant that helps authors organize their thoughts, create structured outlines, and transform messy notes into coherent chapters. Whether you&rsquo;re a beginner or experienced writer, our AI streamlines the writing process.</p>
                       </div>
                     )}
@@ -750,7 +750,7 @@ export default function LandingPageVintage() {
                       How does the Binder & Outliner feature work?
                     </button>
                     {expandedFAQ === 1 && (
-                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] animate-fade-in">
+                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] transition-all duration-300 ease-in-out">
                         <p>Simply paste your messy notes or draft freely in the input area. Our AI analyzes your content and automatically organizes it into logical chapters, scenes, and sections. You can then refine the structure with our intuitive drag-and-drop interface.</p>
                       </div>
                     )}
@@ -775,7 +775,7 @@ export default function LandingPageVintage() {
                       Can I use Escribo AI for different types of writing projects?
                     </button>
                     {expandedFAQ === 2 && (
-                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] animate-fade-in">
+                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] transition-all duration-300 ease-in-out">
                         <p>Absolutely! Escribo AI works for novels, short stories, academic papers, screenplays, blog posts, and more. Our AI adapts to different writing styles and formats, making it versatile for any creative or professional writing project.</p>
                       </div>
                     )}
@@ -800,7 +800,7 @@ export default function LandingPageVintage() {
                       Is my writing data secure and private?
                     </button>
                     {expandedFAQ === 3 && (
-                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] animate-fade-in">
+                      <div className="font-montserrat font-normal text-[16px] text-[#53442d] leading-[1.15] transition-all duration-300 ease-in-out">
                         <p>Yes, your privacy is our top priority. All your writing data is encrypted and stored securely. We never share your content with third parties, and you maintain full ownership of your work. You can delete your data at any time.</p>
                       </div>
                     )}
