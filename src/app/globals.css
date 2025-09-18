@@ -28,6 +28,10 @@ html, body {
   overflow-x: hidden;
 }
 
+html {
+  zoom: 0.95;
+}
+
 .font-avigea {
   font-family: var(--font-avigea);
 }

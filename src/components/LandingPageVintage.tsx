@@ -3,6 +3,23 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+// Vintage-themed loader component
+const VintageLoader = ({ className = "" }: { className?: string }) => {
+  return (
+    <div className={`flex items-center justify-center ${className}`}>
+      <div className="relative">
+        {/* Outer ring */}
+        <div className="w-12 h-12 border-2 border-[#988361] rounded-full animate-spin border-t-transparent"></div>
+        {/* Inner decorative elements */}
+        <div className="absolute inset-2 border border-[#a16631] rounded-full opacity-50"></div>
+        <div className="absolute inset-3 w-6 h-6 bg-[#f4e7d1] rounded-full opacity-30 animate-pulse"></div>
+        {/* Center dot */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#53442d] rounded-full"></div>
+      </div>
+    </div>
+  );
+};
+
 // Image constants from public folder
 const imgLantern = "/lantern.png";
 const imgAboutLeft = "/about-decorative-left.png";
@@ -20,12 +37,12 @@ const imgFeather2 = "/feather-2.png";
 const imgRoughChatbox = "/rough-chatbox.svg";
 const imgRefinedChatbox = "/refined-chatbox.svg";
 const imgPaper2 = "/paper-2.png";
-const imgBook = "/book.svg";
+const imgBook = "/book.png";
 const imgDocument = "/document.svg";
 const imgSparkImagery = "/spark-imagery.svg";
-const imgCard1 = "/card-1.svg";
-const imgCard2 = "/card-2.svg";
-const imgCard3 = "/card-3.svg";
+const imgCard1 = "/card-1.png";
+const imgCard2 = "/card-2.png";
+const imgCard3 = "/card-3.png";
 
 interface ButtonProps {
   buttonText?: string;
@@ -98,6 +115,22 @@ export default function LandingPageVintage() {
   // Revolutionary cards animation state
   const [currentCard, setCurrentCard] = useState(0);
 
+  // Image loading states
+  const [loadingStates, setLoadingStates] = useState({
+    card1: true,
+    card2: true,
+    card3: true,
+    roughChatbox: true,
+    refinedChatbox: true,
+    document: true,
+    sparkImagery: true
+  });
+
+  // Handle image load completion
+  const handleImageLoad = (imageName: keyof typeof loadingStates) => {
+    setLoadingStates(prev => ({ ...prev, [imageName]: false }));
+  };
+
   // FAQ toggle function
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
@@ -162,7 +195,7 @@ export default function LandingPageVintage() {
   }, []);
 
   return (
-    <div className="bg-[#f4e7d1] relative h-screen transform scale-[0.875] origin-top-left overflow-x-hidden" style={{ width: '114.29%', height: '114.29vh' }}>
+    <div className="bg-[#f4e7d1] relative overflow-x-hidden">
       {/* Hero Section */}
       <div className="bg-[#1c150b] h-[900px] lg:h-[1104px] relative overflow-hidden">
         {/* Decorative lamp images */}
@@ -271,7 +304,7 @@ export default function LandingPageVintage() {
       </div>
 
       {/* About Section */}
-      <div className="bg-[#f4e7d1] min-h-[800px] relative overflow-hidden -mt-[60px] w-full">
+      <div className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] w-full">
         {/* Decorative images - responsive positioning */}
         <div className="absolute left-0 opacity-20 w-[20vw] h-[20vw] top-[40%]">
           <Image
@@ -291,7 +324,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Content container */}
-        <div className="flex items-center justify-center min-h-[600px] md:min-h-[800px] px-4 py-[60px] md:py-[100px]">
+        <div className="flex items-start justify-center min-h-[500px] md:min-h-[650px] px-4 pt-[40px] md:pt-[80px] lg:pt-[120px] pb-[30px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
             <div className="font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0">
               <p className="leading-[normal] whitespace-pre">About</p>
@@ -346,30 +379,34 @@ export default function LandingPageVintage() {
           />
         </div>
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 md:px-8 lg:px-[120px] py-[40px] md:py-[60px] lg:py-[100px] gap-6 lg:gap-0">
+        <div className="absolute inset-0 flex flex-col xl:flex-row items-center justify-center xl:justify-between px-4 md:px-8 lg:px-[120px] pt-[20px] md:pt-[40px] lg:pt-[60px] pb-[40px] md:pb-[60px] lg:pb-[100px] gap-6 xl:gap-0">
           {/* Left side - Text content */}
-          <div className="content-stretch flex flex-col gap-[30px] lg:gap-[80px] items-center lg:items-start justify-start relative max-w-[505px] text-center lg:text-left">
-            <div className="content-stretch flex flex-col gap-[16px] lg:gap-[24px] items-center lg:items-start justify-center leading-[0] relative shrink-0 text-[#53442d]">
-              <div className="font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] lg:text-[80px] w-full">
+          <div className="content-stretch flex flex-col gap-[30px] xl:gap-[80px] items-center xl:items-start justify-start relative max-w-[505px] text-center xl:text-left">
+            <div className="content-stretch flex flex-col gap-[16px] xl:gap-[24px] items-center xl:items-start justify-center leading-[0] relative shrink-0 text-[#53442d]">
+              <div className="font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] xl:text-[80px] w-full">
                 <p className="leading-[1.15]">Revolutionary Stuff</p>
               </div>
               <div className="font-montserrat font-normal relative shrink-0 text-[16px] md:text-[20px]">
                 <p className="leading-[normal]">& so much more!</p>
               </div>
             </div>
-            <div className="shrink-0 w-[160px] lg:w-[180px] h-[50px] lg:h-[60px]">
-              <Button buttonText="Get Started" property1="Secondary" property2="Outline" />
+            <div className="shrink-0 w-[160px] xl:w-[180px] h-[50px] xl:h-[60px]">
+              <Button buttonText="Try Now" property1="Secondary" property2="Outline" />
             </div>
 
             {/* Mobile/Tablet Card stack animation - below button */}
             <div className="flex min-[1400px]:hidden relative w-[320px] md:w-[400px] h-[400px] md:h-[480px] mt-6 mx-auto">
               {/* Card 1 - Base card */}
               <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[360px] md:h-[432px] transition-all duration-700 ease-in-out z-10">
+                {loadingStates.card1 && (
+                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                )}
                 <Image
                   src={imgCard1}
                   alt="Revolutionary feature card 1"
                   fill
                   className="object-contain"
+                  onLoad={() => handleImageLoad('card1')}
                 />
               </div>
 
@@ -381,11 +418,15 @@ export default function LandingPageVintage() {
                     : 'top-[90px] left-[90px] rotate-[25deg] opacity-0 z-20'
                 }`}
               >
+                {loadingStates.card2 && (
+                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                )}
                 <Image
                   src={imgCard2}
                   alt="Revolutionary feature card 2"
                   fill
                   className="object-contain"
+                  onLoad={() => handleImageLoad('card2')}
                 />
               </div>
 
@@ -397,11 +438,15 @@ export default function LandingPageVintage() {
                     : 'top-[120px] left-[120px] rotate-[20deg] opacity-0 z-30'
                 }`}
               >
+                {loadingStates.card3 && (
+                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                )}
                 <Image
                   src={imgCard3}
                   alt="Revolutionary feature card 3"
                   fill
                   className="object-contain"
+                  onLoad={() => handleImageLoad('card3')}
                 />
               </div>
             </div>
@@ -411,11 +456,15 @@ export default function LandingPageVintage() {
           <div className="hidden min-[1400px]:block relative w-[600px] h-[700px] -ml-32">
             {/* Card 1 - Base card */}
             <div className="absolute top-0 -left-30 w-[500px] h-[600px] transition-all duration-700 ease-in-out z-10">
+              {loadingStates.card1 && (
+                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+              )}
               <Image
                 src={imgCard1}
                 alt="Revolutionary feature card 1"
                 fill
                 className="object-contain"
+                onLoad={() => handleImageLoad('card1')}
               />
             </div>
 
@@ -427,11 +476,15 @@ export default function LandingPageVintage() {
                   : 'top-48 left-48 rotate-[25deg] opacity-0 z-20'
               }`}
             >
+              {loadingStates.card2 && (
+                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+              )}
               <Image
                 src={imgCard2}
                 alt="Revolutionary feature card 2"
                 fill
                 className="object-contain"
+                onLoad={() => handleImageLoad('card2')}
               />
             </div>
 
@@ -443,11 +496,15 @@ export default function LandingPageVintage() {
                   : 'top-60 left-60 rotate-[20deg] opacity-0 z-30'
               }`}
             >
+              {loadingStates.card3 && (
+                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+              )}
               <Image
                 src={imgCard3}
                 alt="Revolutionary feature card 3"
                 fill
                 className="object-contain"
+                onLoad={() => handleImageLoad('card3')}
               />
             </div>
           </div>
@@ -495,7 +552,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Get Started" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Organize" property1="Teritiary" property2="Solid" />
                   </div>
                 </div>
               </div>
@@ -519,7 +576,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Get Started" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Preview" property1="Teritiary" property2="Solid" />
                   </div>
                 </div>
               </div>
@@ -543,7 +600,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Get Started" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Inspire" property1="Teritiary" property2="Solid" />
                   </div>
                 </div>
               </div>
@@ -555,21 +612,29 @@ export default function LandingPageVintage() {
               <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Rough chatbox - top */}
                 <div className="relative w-full h-[200px] mb-4" style={{ aspectRatio: '149/86' }}>
+                  {loadingStates.roughChatbox && (
+                    <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  )}
                   <Image
                     src={imgRoughChatbox}
                     alt="Paste your Rough Draft or Story Idea"
                     fill
                     className="object-contain"
+                    onLoad={() => handleImageLoad('roughChatbox')}
                   />
                 </div>
 
                 {/* Refined chatbox - bottom */}
                 <div className="relative w-full h-[240px]">
+                  {loadingStates.refinedChatbox && (
+                    <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  )}
                   <Image
                     src={imgRefinedChatbox}
                     alt="AI will automatically create organized chapters"
                     fill
                     className="object-contain"
+                    onLoad={() => handleImageLoad('refinedChatbox')}
                   />
                 </div>
               </div>
@@ -578,11 +643,15 @@ export default function LandingPageVintage() {
               <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[280px] h-[336px]">
+                    {loadingStates.document && (
+                      <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                    )}
                     <Image
                       src={imgDocument}
                       alt="Book preview with formatted pages"
                       fill
                       className="object-contain"
+                      onLoad={() => handleImageLoad('document')}
                     />
                   </div>
                 </div>
@@ -592,11 +661,15 @@ export default function LandingPageVintage() {
               <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[320px] h-[320px]">
+                    {loadingStates.sparkImagery && (
+                      <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                    )}
                     <Image
                       src={imgSparkImagery}
                       alt="Creative spark illustration with structure banner and spiral designs"
                       fill
                       className="object-contain"
+                      onLoad={() => handleImageLoad('sparkImagery')}
                     />
                   </div>
                 </div>
@@ -609,21 +682,29 @@ export default function LandingPageVintage() {
               <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
                 {/* Rough chatbox - top */}
                 <div className="absolute top-0 left-0 w-[596px] h-[344px] flex-shrink-0" style={{ aspectRatio: '149/86' }}>
+                  {loadingStates.roughChatbox && (
+                    <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  )}
                   <Image
                     src={imgRoughChatbox}
                     alt="Paste your Rough Draft or Story Idea"
                     fill
                     className="object-contain"
+                    onLoad={() => handleImageLoad('roughChatbox')}
                   />
                 </div>
 
                 {/* Refined chatbox - bottom */}
                 <div className="absolute top-[380px] right-0 w-[595px] h-[415px] flex-shrink-0">
+                  {loadingStates.refinedChatbox && (
+                    <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  )}
                   <Image
                     src={imgRefinedChatbox}
                     alt="AI will automatically create organized chapters"
                     fill
                     className="object-contain"
+                    onLoad={() => handleImageLoad('refinedChatbox')}
                   />
                 </div>
               </div>
@@ -632,11 +713,15 @@ export default function LandingPageVintage() {
               <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="flex items-center justify-center h-full">
                   <div className="w-[500px] h-[600px] flex-shrink-0">
+                    {loadingStates.document && (
+                      <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                    )}
                     <Image
                       src={imgDocument}
                       alt="Book preview with formatted pages"
                       fill
                       className="object-contain"
+                      onLoad={() => handleImageLoad('document')}
                     />
                   </div>
                 </div>
@@ -646,11 +731,15 @@ export default function LandingPageVintage() {
               <div className={`absolute inset-0 -pt-40 transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="flex items-start justify-center h-full ">
                   <div className="w-[600px] h-[600px] flex-shrink-0">
+                    {loadingStates.sparkImagery && (
+                      <VintageLoader className="absolute inset-0 bg-[#a16631] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                    )}
                     <Image
                       src={imgSparkImagery}
                       alt="Creative spark illustration with structure banner and spiral designs"
                       fill
                       className="object-contain"
+                      onLoad={() => handleImageLoad('sparkImagery')}
                     />
                   </div>
                 </div>
@@ -856,7 +945,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Footer Content */}
-        <div className="absolute bottom-[20px] content-stretch flex flex-col gap-[40px] md:gap-[60px] items-center justify-start py-[40px] md:py-[60px] px-4 w-full z-20">
+        <div className="absolute bottom-0 content-stretch flex flex-col gap-[40px] md:gap-[60px] items-center justify-start py-[40px] md:py-[60px] px-4 w-full z-20">
           {/* Banner Text */}
           <div className="content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start relative shrink-0 w-full max-w-[1028px]">
             <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[28px] md:text-[50px] lg:text-[70px] text-center w-full">
