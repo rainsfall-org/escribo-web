@@ -164,7 +164,7 @@ export default function LandingPageVintage() {
   return (
     <div className="bg-[#f4e7d1] relative h-screen transform scale-[0.875] origin-top-left overflow-x-hidden" style={{ width: '114.29%', height: '114.29vh' }}>
       {/* Hero Section */}
-      <div className="bg-[#1c150b] h-[1104px] relative overflow-hidden">
+      <div className="bg-[#1c150b] h-[900px] lg:h-[1104px] relative overflow-hidden">
         {/* Decorative lamp images */}
         <div className="absolute flex items-center justify-center left-0 size-[197px] top-[220px]">
           <div className="flex-none rotate-[180deg] scale-y-[-100%]">
@@ -219,13 +219,13 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Main hero content */}
-        <div className="absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] lg:max-w-[800px] xl:max-w-[700px] px-4">
+        <div className="absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] lg:max-w-[900px] xl:max-w-[850px] px-4">
           <div className="content-stretch flex flex-col gap-[12px] md:gap-[20px] items-start justify-start leading-[0] relative shrink-0 text-center w-full">
             <div className="font-montserrat font-normal relative shrink-0 text-[#f4e7d1] text-[16px] md:text-[20px] w-full">
               <p className="leading-[normal]">ESCRIBO AI</p>
             </div>
             <div className="flex flex-col font-avigea justify-center not-italic relative shrink-0 text-[#1c150b] text-[0px] w-full">
-              <div className="leading-[1.15] text-[28px] md:text-[70px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
+              <div className="leading-[1.15] text-[28px] md:text-[60px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
                 <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}>Helping every </span>
                 <span className="font-avigea italic text-[#988361]" style={{ fontWeight: 400, fontStyle: 'italic' }}>
                   {currentText}
@@ -254,7 +254,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Handwritten banner image */}
-        <div className="absolute top-[200px] bottom-[100px] left-0 right-0 w-full hidden lg:block pointer-events-none overflow-hidden">
+        <div className="absolute top-[200px] bottom-[100px] left-0 right-0 w-full block pointer-events-none overflow-hidden">
           <Image
             src="/handwritten-banner.png"
             alt="Handwritten banner text"
@@ -690,7 +690,7 @@ export default function LandingPageVintage() {
           {/* FAQ Section with decorative books */}
           <div className="relative max-w-4xl w-full">
             {/* Decorative book - top left */}
-            <div className="absolute -left-8 md:-left-16 lg:-left-25 -top-8 md:-top-12 lg:-top-20 block" style={{ width: '120px', height: '115px', flexShrink: 0 }}>
+            <div className="absolute -left-25 -top-20" style={{ width: '197.117px', height: '192.038px', flexShrink: 0 }}>
               <Image
                 src={imgBook}
                 alt="Decorative book"
@@ -699,33 +699,10 @@ export default function LandingPageVintage() {
               />
             </div>
 
-            {/* Decorative book - top left - larger for desktop */}
-            <div className="absolute -left-25 -top-20 hidden lg:block" style={{ width: '197.117px', height: '192.038px', flexShrink: 0 }}>
-              <Image
-                src={imgBook}
-                alt="Decorative book"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* Decorative book - bottom right - mobile */}
+            {/* Decorative book - bottom right */}
             <div
-              className="absolute -right-8 md:-right-16 lg:hidden -bottom-8 md:-bottom-12 z-0 block"
-              style={{ width: '180px', height: '175px', transform: 'rotate(60deg)', flexShrink: 0 }}
-            >
-              <Image
-                src={imgBook}
-                alt="Decorative book"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* Decorative book - bottom right - desktop */}
-            <div
-              className="absolute -right-55 -bottom-42 hidden lg:block z-0"
-              style={{ width: '349.573px', height: '337.771px', transform: 'rotate(60deg)', flexShrink: 0 }}
+              className="absolute -right-16 lg:-right-55 -bottom-42 z-0 w-[200px] h-[193px] lg:w-[349px] lg:h-[337px]"
+              style={{ transform: 'rotate(60deg)', flexShrink: 0 }}
             >
               <Image
                 src={imgBook}
