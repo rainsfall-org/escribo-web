@@ -19,12 +19,13 @@
   --font-avigea: 'Avigea', Georgia, serif;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   background: #1C150B;
   color: #F4E7D1;
   font-family: var(--font-montserrat), sans-serif;
+  overflow-x: hidden;
 }
 
 .font-avigea {
