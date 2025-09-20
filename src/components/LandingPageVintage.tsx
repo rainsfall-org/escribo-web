@@ -194,6 +194,18 @@ export default function LandingPageVintage() {
     return () => clearInterval(cardInterval);
   }, []);
 
+  // Preload all card images on component mount for better performance
+  useEffect(() => {
+    const preloadImages = [imgCard1, imgCard2, imgCard3];
+    preloadImages.forEach((src) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  }, []);
+
   return (
     <div className="bg-[#f4e7d1] relative overflow-x-hidden">
       {/* Hero Section */}
@@ -408,6 +420,7 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 1"
                   fill
                   className="object-contain"
+                  priority
                   onLoad={() => handleImageLoad('card1')}
                 />
               </div>
@@ -430,6 +443,7 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 2"
                   fill
                   className="object-contain"
+                  priority
                   onLoad={() => handleImageLoad('card2')}
                 />
               </div>
@@ -452,6 +466,7 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 3"
                   fill
                   className="object-contain"
+                  priority
                   onLoad={() => handleImageLoad('card3')}
                 />
               </div>
@@ -472,6 +487,7 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 1"
                 fill
                 className="object-contain"
+                priority
                 onLoad={() => handleImageLoad('card1')}
               />
             </div>
@@ -494,6 +510,7 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 2"
                 fill
                 className="object-contain"
+                priority
                 onLoad={() => handleImageLoad('card2')}
               />
             </div>
@@ -516,6 +533,7 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 3"
                 fill
                 className="object-contain"
+                priority
                 onLoad={() => handleImageLoad('card3')}
               />
             </div>
