@@ -270,7 +270,7 @@ export default function LandingPageVintage() {
               <p className="leading-[normal]">ESCRIBO AI</p>
             </div>
             <div className="flex flex-col font-avigea justify-center not-italic relative shrink-0 text-[#1c150b] text-[0px] w-full">
-              <div className="leading-[1.15] text-[28px] md:text-[60px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
+              <div className="leading-[1.15] text-[22px] sm:text-[28px] md:text-[60px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
                 <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}>Helping every </span>
                 <span className="font-avigea italic text-[#988361]" style={{ fontWeight: 400, fontStyle: 'italic' }}>
                   {currentText}
@@ -310,7 +310,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Large "Escribo AI" text at bottom */}
-        <div className="absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[80px] sm:text-[120px] md:text-[200px] lg:text-[320px] text-nowrap z-10" style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
+        <div className="absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[60px] sm:text-[80px] md:text-[200px] lg:text-[320px] text-nowrap z-10" style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
           <p className="whitespace-pre">Escribo AI</p>
         </div>
       </div>
@@ -336,7 +336,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Content container */}
-        <div className="flex items-start justify-center min-h-[500px] md:min-h-[650px] px-4 pt-[40px] md:pt-[80px] lg:pt-[120px] pb-[30px] md:pb-[50px]">
+        <div className="flex items-start justify-center min-h-[550px] md:min-h-[650px] px-4 pt-[30px] md:pt-[80px] lg:pt-[120px] pb-[40px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
             <div className="font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0">
               <p className="leading-[normal] whitespace-pre">About</p>
@@ -978,7 +978,7 @@ export default function LandingPageVintage() {
         <div className="absolute bottom-0 content-stretch flex flex-col gap-[40px] md:gap-[60px] items-center justify-start py-[40px] md:py-[60px] px-4 w-full z-20">
           {/* Banner Text */}
           <div className="content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start relative shrink-0 w-full max-w-[1028px]">
-            <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[28px] md:text-[50px] lg:text-[70px] text-center w-full">
+            <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[20px] sm:text-[28px] md:text-[50px] lg:text-[70px] text-center w-full">
               <p>Ready to write without limits?<br />Start Today!</p>
             </div>
             <div className="bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px]">
