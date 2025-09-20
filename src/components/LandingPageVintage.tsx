@@ -20,29 +20,29 @@ const VintageLoader = ({ className = "" }: { className?: string }) => {
   );
 };
 
-// Image constants from public folder
-const imgLantern = "/lantern.png";
-const imgAboutLeft = "/about-decorative-left.png";
-const imgAboutRight = "/about-decorative-right.png";
-const imgFooterDivider = "/Footer Divider.svg";
-const imgEscriboLogo = "/escribo-logo.svg";
-const imgInstagram = "/instagram.svg";
-const imgLinkedin = "/linkedin.svg";
-const imgFacebook = "/facebook.svg";
-const imgTwitter = "/twitter.svg";
-const imgGrunge = "/grunge.png";
-const imgPaper1 = "/paper-1.png";
-const imgFeather = "/feather.png";
-const imgFeather2 = "/feather-2.png";
-const imgRoughChatbox = "/rough-chatbox.svg";
-const imgRefinedChatbox = "/refined-chatbox.svg";
-const imgPaper2 = "/paper-2.png";
-const imgBook = "/book.png";
-const imgDocument = "/document.svg";
-const imgSparkImagery = "/spark-imagery.svg";
-const imgCard1 = "/card-1.png";
-const imgCard2 = "/card-2.png";
-const imgCard3 = "/card-3.png";
+// Image constants from organized public folder
+const imgLantern = "/images/hero/lantern.png";
+const imgAboutLeft = "/images/about/decorative-left.png";
+const imgAboutRight = "/images/about/decorative-right.png";
+const imgFooterDivider = "/images/footer/divider.svg";
+const imgEscriboLogo = "/images/branding/escribo-logo.svg";
+const imgInstagram = "/images/social/instagram.svg";
+const imgLinkedin = "/images/social/linkedin.svg";
+const imgFacebook = "/images/social/facebook.svg";
+const imgTwitter = "/images/social/twitter.svg";
+const imgGrunge = "/images/hero/grunge-texture.png";
+const imgPaper1 = "/images/revolutionary/paper-background.png";
+const imgFeather = "/images/revolutionary/feather-left.png";
+const imgFeather2 = "/images/revolutionary/feather-right.png";
+const imgRoughChatbox = "/images/features/chatbox-rough.svg";
+const imgRefinedChatbox = "/images/features/chatbox-refined.svg";
+const imgPaper2 = "/images/faq/paper-background.png";
+const imgBook = "/images/faq/book-decorative.png";
+const imgDocument = "/images/features/document-preview.svg";
+const imgSparkImagery = "/images/features/spark-imagery.svg";
+const imgCard1 = "/images/revolutionary/feature-card-1.png";
+const imgCard2 = "/images/revolutionary/feature-card-2.png";
+const imgCard3 = "/images/revolutionary/feature-card-3.png";
 
 interface ButtonProps {
   buttonText?: string;
@@ -50,6 +50,7 @@ interface ButtonProps {
   property2?: "Outline" | "Solid";
   state?: "Default" | "Hover";
   property3?: "Default" | "Only Icon";
+  onClick?: () => void;
 }
 
 function Button({
@@ -57,11 +58,12 @@ function Button({
   property1 = "Primary",
   property2 = "Solid",
   state = "Default",
-  property3 = "Default"
+  property3 = "Default",
+  onClick
 }: ButtonProps) {
   if (property1 === "Secondary" && property2 === "Solid" && state === "Default" && property3 === "Default") {
     return (
-      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group">
+      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group" onClick={onClick}>
         <div className="font-avigea leading-[0] not-italic relative shrink-0 text-[20px] text-nowrap text-white group-hover:tracking-wide transition-all duration-200">
           <p className="leading-[normal] whitespace-pre">{buttonText}</p>
         </div>
@@ -70,7 +72,7 @@ function Button({
   }
   if (property1 === "Teritiary" && property2 === "Solid" && state === "Default" && property3 === "Default") {
     return (
-      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group">
+      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group" onClick={onClick}>
         <div className="font-avigea leading-[0] not-italic relative shrink-0 text-[#53442d] text-[20px] text-nowrap group-hover:tracking-wide transition-all duration-200">
           <p className="leading-[normal] whitespace-pre">{buttonText}</p>
         </div>
@@ -79,7 +81,7 @@ function Button({
   }
   if (property1 === "Secondary" && property2 === "Outline" && state === "Default" && property3 === "Default") {
     return (
-      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105">
+      <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105" onClick={onClick}>
         <div className="absolute border-2 border-[#988361] border-solid inset-0 pointer-events-none rounded-[41px]" />
         <div className="absolute inset-0 bg-[#988361] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out rounded-[41px]" />
         <div className="font-avigea leading-[0] not-italic relative shrink-0 text-[#988361] group-hover:text-white text-[20px] text-nowrap z-10 transition-colors duration-300">
@@ -89,7 +91,7 @@ function Button({
     );
   }
   return (
-    <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group">
+    <div className="box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] size-full cursor-pointer group" onClick={onClick}>
       <div className="font-avigea leading-[0] not-italic relative shrink-0 text-[20px] text-nowrap text-white group-hover:tracking-wide transition-all duration-200">
         <p className="leading-[normal] whitespace-pre">{buttonText}</p>
       </div>
@@ -130,6 +132,14 @@ export default function LandingPageVintage() {
   // Revolutionary cards animation state
   const [currentCard, setCurrentCard] = useState(0);
 
+  // Waitlist modal state
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+  const [waitlistEmail, setWaitlistEmail] = useState("");
+  const [waitlistRole, setWaitlistRole] = useState("");
+  const [waitlistCustomRole, setWaitlistCustomRole] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
   // Image loading states
   const [loadingStates, setLoadingStates] = useState({
     card1: true,
@@ -144,6 +154,66 @@ export default function LandingPageVintage() {
   // Handle image load completion
   const handleImageLoad = (imageName: keyof typeof loadingStates) => {
     setLoadingStates(prev => ({ ...prev, [imageName]: false }));
+  };
+
+  // Waitlist functions
+  const openWaitlistModal = () => {
+    setIsWaitlistModalOpen(true);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
+    setWaitlistEmail("");
+    setWaitlistRole("");
+    setWaitlistCustomRole("");
+    setSubmitMessage("");
+    // Restore background scrolling
+    document.body.style.overflow = 'unset';
+  };
+
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!waitlistEmail || !waitlistRole) {
+      setSubmitMessage("Please fill in all fields");
+      return;
+    }
+
+    if (waitlistRole === "other" && !waitlistCustomRole.trim()) {
+      setSubmitMessage("Please specify your role");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: waitlistEmail,
+          role: waitlistRole === "other" ? waitlistCustomRole : waitlistRole,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitMessage("Welcome to the waitlist! We'll be in touch soon.");
+        setTimeout(() => {
+          closeWaitlistModal();
+        }, 2000);
+      } else {
+        setSubmitMessage("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setSubmitMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // FAQ toggle function
@@ -219,6 +289,14 @@ export default function LandingPageVintage() {
       link.href = src;
       document.head.appendChild(link);
     });
+  }, []);
+
+  // Cleanup effect to restore scroll on component unmount
+  useEffect(() => {
+    return () => {
+      // Ensure scroll is restored if component unmounts while modal is open
+      document.body.style.overflow = 'unset';
+    };
   }, []);
 
   // Hero animation trigger
@@ -310,7 +388,66 @@ export default function LandingPageVintage() {
   }, [revolutionaryAnimated]);
 
   return (
-    <div className="bg-[#f4e7d1] relative overflow-x-hidden">
+    <>
+      {/* Custom styles for dropdown options */}
+      <style jsx global>{`
+        .vintage-select {
+          background-color: #ffffff !important;
+        }
+        .vintage-select option {
+          background-color: #f4e7d1 !important;
+          color: #53442d !important;
+          padding: 16px !important;
+          font-family: 'Montserrat', sans-serif !important;
+          border: none !important;
+          font-size: 16px !important;
+          font-weight: 500 !important;
+          line-height: 1.5 !important;
+        }
+        .vintage-select option:hover {
+          background-color: #988361 !important;
+          color: #f4e7d1 !important;
+        }
+        .vintage-select option:checked,
+        .vintage-select option:focus,
+        .vintage-select option:active {
+          background-color: #a16631 !important;
+          color: #f4e7d1 !important;
+          outline: none !important;
+        }
+        .vintage-select option[selected] {
+          background-color: #a16631 !important;
+          color: #f4e7d1 !important;
+        }
+        .vintage-select option:disabled {
+          background-color: #988361 !important;
+          color: #f4e7d1 !important;
+          font-style: italic !important;
+        }
+        .vintage-select::-webkit-scrollbar {
+          width: 12px;
+        }
+        .vintage-select::-webkit-scrollbar-track {
+          background: #f4e7d1;
+          border-radius: 8px;
+        }
+        .vintage-select::-webkit-scrollbar-thumb {
+          background: #988361;
+          border-radius: 8px;
+          border: 2px solid #f4e7d1;
+        }
+        .vintage-select::-webkit-scrollbar-thumb:hover {
+          background: #53442d;
+        }
+        
+        /* Firefox support */
+        .vintage-select {
+          scrollbar-width: thin;
+          scrollbar-color: #988361 #f4e7d1;
+        }
+      `}</style>
+
+      <div className="bg-[#f4e7d1] relative overflow-x-hidden">
       {/* Hero Section */}
       <div className="bg-[#1c150b] h-[900px] lg:h-[1104px] relative overflow-hidden">
         {/* Decorative lamp images */}
@@ -368,7 +505,7 @@ export default function LandingPageVintage() {
             </div>
             <div className="content-stretch flex gap-[12px] items-center justify-start relative shrink-0">
               <div className="bg-[#988361] box-border content-stretch flex gap-[10px] items-center justify-center px-[36px] py-[14px] relative rounded-[41px] shrink-0 w-[160px] h-[52px]">
-                <Button buttonText="Sign in" property1="Secondary" />
+                <Button buttonText="Join Waitlist" property1="Secondary" onClick={openWaitlistModal} />
               </div>
             </div>
           </div>
@@ -414,7 +551,7 @@ export default function LandingPageVintage() {
           <div className={`bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px] transition-all duration-800 ease-out delay-900 hover:bg-[#8a5529] ${
             heroAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
           }`}>
-            <Button buttonText="Get Started" />
+            <Button buttonText="Get Started" onClick={openWaitlistModal} />
           </div>
         </div>
 
@@ -423,7 +560,7 @@ export default function LandingPageVintage() {
           heroAnimated ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
         }`}>
           <Image
-            src="/handwritten-banner.png"
+            src="/images/hero/handwritten-banner.png"
             alt="Handwritten banner text"
             fill
             className="object-contain object-center"
@@ -568,7 +705,7 @@ export default function LandingPageVintage() {
             <div className={`shrink-0 w-[160px] xl:w-[180px] h-[50px] xl:h-[60px] transition-all duration-600 ease-out delay-1300 ${
               revolutionaryAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
             }`}>
-              <Button buttonText="Try Now" property1="Secondary" property2="Outline" />
+              <Button buttonText="Try Now" property1="Secondary" property2="Outline" onClick={openWaitlistModal} />
             </div>
 
             {/* Mobile/Tablet Card stack animation - below button */}
@@ -724,7 +861,7 @@ export default function LandingPageVintage() {
             featuresAnimated ? 'opacity-30' : 'opacity-0'
           }`}
           style={{
-            backgroundImage: `url('/dust.png')`,
+            backgroundImage: `url('/images/features/dust-texture.png')`,
             backgroundRepeat: 'repeat',
             backgroundSize: 'auto'
           }}
@@ -763,7 +900,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Organize" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Organize" property1="Teritiary" property2="Solid" onClick={openWaitlistModal} />
                   </div>
                 </div>
               </div>
@@ -787,7 +924,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Preview" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Preview" property1="Teritiary" property2="Solid" onClick={openWaitlistModal} />
                   </div>
                 </div>
               </div>
@@ -811,7 +948,7 @@ export default function LandingPageVintage() {
                 {/* Button */}
                 <div className="w-[140px] md:w-[180px] h-[48px] md:h-[60px] mx-auto lg:mx-0">
                   <div className="bg-[#f4e7d1] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] w-full h-full">
-                    <Button buttonText="Inspire" property1="Teritiary" property2="Solid" />
+                    <Button buttonText="Inspire" property1="Teritiary" property2="Solid" onClick={openWaitlistModal} />
                   </div>
                 </div>
               </div>
@@ -1148,7 +1285,7 @@ export default function LandingPageVintage() {
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url('/paper-texture.png')`,
+            backgroundImage: `url('/images/footer/paper-texture.png')`,
             backgroundRepeat: 'repeat',
             backgroundSize: 'auto'
           }}
@@ -1203,7 +1340,7 @@ export default function LandingPageVintage() {
             <div className={`bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px] transition-all duration-600 ease-out delay-1000 hover:bg-[#8a5529] ${
               footerAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
             }`}>
-              <Button buttonText="Register" />
+              <Button buttonText="Register" onClick={openWaitlistModal} />
             </div>
           </div>
 
@@ -1309,6 +1446,146 @@ export default function LandingPageVintage() {
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Waitlist Modal */}
+      {isWaitlistModalOpen && (
+        <>
+          {/* Backdrop for closing with dulling effect */}
+          <div
+            className="fixed inset-0 z-40"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+            onClick={closeWaitlistModal}
+          />
+
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-sm sm:max-w-md lg:max-w-lg px-4 sm:px-6">
+          {/* Modal Content */}
+          <div className="relative bg-[#f4e7d1] border-2 sm:border-4 border-[#53442d] rounded-xl sm:rounded-2xl shadow-2xl w-full max-h-[90vh] overflow-y-auto" style={{ boxShadow: '0 25px 50px -12px rgba(83, 68, 45, 0.5)' }}>
+            {/* Header with decorative elements */}
+            <div className="relative p-4 sm:p-6 lg:p-8 border-b-2 border-dashed border-[#988361]">
+              <div className="text-center">
+                <h2 className="font-avigea text-2xl sm:text-3xl lg:text-4xl text-[#53442d] mb-2 sm:mb-3 tracking-wide">
+                  Join the Waitlist
+                </h2>
+                <p className="font-montserrat font-medium text-sm sm:text-base text-[#988361] leading-relaxed">
+                  Be the first to experience the future of writing
+                </p>
+              </div>
+
+              {/* Close button */}
+              <button
+                onClick={closeWaitlistModal}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-[#988361] text-[#f4e7d1] hover:bg-[#53442d] transition-all duration-300 hover:scale-110 border-2 border-[#53442d]"
+              >
+                <span className="text-xl font-bold leading-none">×</span>
+              </button>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleWaitlistSubmit} className="p-4 sm:p-6 lg:p-8">
+              {/* Email Input */}
+              <div className="mb-6 sm:mb-8">
+                <label className="block font-montserrat font-semibold text-[#53442d] mb-2 sm:mb-3 text-sm sm:text-base">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={waitlistEmail}
+                  onChange={(e) => setWaitlistEmail(e.target.value)}
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 sm:border-3 border-[#988361] rounded-lg sm:rounded-xl bg-white text-[#53442d] placeholder-[#988361]/60 focus:outline-none focus:border-[#a16631] focus:ring-2 focus:ring-[#a16631]/20 transition-all duration-200 font-montserrat text-sm sm:text-base"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+
+              {/* Role Selection */}
+              <div className="mb-6 sm:mb-8">
+                <label className="block font-montserrat font-semibold text-[#53442d] mb-2 sm:mb-3 text-sm sm:text-base">
+                  What best describes you?
+                </label>
+                <select
+                  value={waitlistRole}
+                  onChange={(e) => setWaitlistRole(e.target.value)}
+                  className="vintage-select w-full px-4 sm:px-6 py-3 sm:py-4 border-2 sm:border-3 border-[#988361] rounded-lg sm:rounded-xl bg-white text-[#53442d] font-montserrat text-sm sm:text-base focus:outline-none focus:border-[#a16631] focus:ring-2 focus:ring-[#a16631]/20 transition-all duration-200 cursor-pointer appearance-none"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23988361' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 0.75rem center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '1.25em 1.25em'
+                  }}
+                  required
+                >
+                  <option value="" disabled>Select your role...</option>
+                  <option value="creative-writer">Creative Writer (novels, stories, fiction)</option>
+                  <option value="professional-writer">Professional Writer (business, copywriting)</option>
+                  <option value="academic-writer">Academic Writer (research, essays)</option>
+                  <option value="therapist">Therapist/Counselor (therapeutic writing)</option>
+                  <option value="daily-journaler">Daily Journaler (personal growth)</option>
+                  <option value="other">Other (please specify)</option>
+                </select>
+              </div>
+
+              {/* Custom Role Input */}
+              {waitlistRole === "other" && (
+                <div className="mb-6 sm:mb-8">
+                  <label className="block font-montserrat font-semibold text-[#53442d] mb-2 sm:mb-3 text-sm sm:text-base">
+                    Please specify your role
+                  </label>
+                  <input
+                    type="text"
+                    value={waitlistCustomRole}
+                    onChange={(e) => setWaitlistCustomRole(e.target.value)}
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 sm:border-3 border-[#988361] rounded-lg sm:rounded-xl bg-white text-[#53442d] placeholder-[#988361]/60 focus:outline-none focus:border-[#a16631] focus:ring-2 focus:ring-[#a16631]/20 transition-all duration-200 font-montserrat text-sm sm:text-base"
+                    placeholder="e.g., Screenwriter, Blogger, etc."
+                    required
+                  />
+                </div>
+              )}
+
+              {/* Submit Message */}
+              {submitMessage && (
+                <div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-montserrat border-2 ${
+                  submitMessage.includes("Welcome to the waitlist")
+                    ? "bg-[#f4e7d1] text-[#53442d] border-[#988361]"
+                    : "bg-[#f4e7d1] text-[#a16631] border-[#a16631]"
+                }`}>
+                  {submitMessage}
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-lg sm:rounded-xl font-avigea text-lg sm:text-xl transition-all duration-300 border-2 ${
+                  isSubmitting
+                    ? "bg-[#988361]/50 text-[#f4e7d1]/70 cursor-not-allowed border-[#988361]/50"
+                    : "bg-[#a16631] text-[#f4e7d1] hover:bg-[#8a5529] hover:scale-105 border-[#53442d] hover:border-[#a16631]"
+                }`}
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-[#f4e7d1] border-t-transparent rounded-full animate-spin"></div>
+                    <span>Joining...</span>
+                  </span>
+                ) : (
+                  "Join Waitlist"
+                )}
+              </button>
+            </form>
+
+            {/* Decorative footer */}
+            <div className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
+              <div className="border-t-2 border-dashed border-[#988361] pt-4 sm:pt-6">
+                <p className="text-center font-montserrat text-xs sm:text-sm text-[#988361] leading-relaxed">
+                  We respect your privacy and will never spam you.
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </>
+      )}
+      </div>
+    </>
   );
 }
