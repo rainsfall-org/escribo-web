@@ -32,64 +32,31 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ userRole }) => {
       color: '#F4E7D1',
       lineHeight: '1.6'
     }}>
-      {/* Header with lanterns */}
+      {/* Header */}
       <div style={{
         backgroundColor: '#1C150B',
         padding: '40px 20px',
         textAlign: 'center' as const,
-        position: 'relative' as const,
         borderBottom: '1px solid rgba(152,131,97,0.3)'
       }}>
-        {/* Decorative lanterns */}
-        <img 
-          src="https://escribo.ai/email-assets/lantern.png"
-          alt="Decorative lantern"
-          style={{
-            position: 'absolute' as const,
-            left: '20px',
-            top: '20px',
-            width: '40px',
-            height: '40px',
-            opacity: 0.6
-          }}
-        />
-        <img 
-          src="https://escribo.ai/email-assets/lantern.png"
-          alt="Decorative lantern"
-          style={{
-            position: 'absolute' as const,
-            right: '20px',
-            top: '20px',
-            width: '40px',
-            height: '40px',
-            opacity: 0.6,
-            transform: 'scaleX(-1)' // Mirror the image
-          }}
-        />
-        
-        {/* Logo area */}
-        <div style={{
-          marginBottom: '20px'
+        <h1 style={{
+          fontFamily: '"Avigea", Georgia, serif',
+          fontSize: '42px',
+          color: '#F4E7D1',
+          margin: '0 0 10px 0',
+          fontWeight: 'normal',
+          letterSpacing: '1px'
         }}>
-          <h1 style={{
-            fontFamily: '"Avigea", Georgia, serif',
-            fontSize: '48px',
-            color: '#F4E7D1',
-            margin: '0',
-            fontWeight: 'normal',
-            letterSpacing: '1px'
-          }}>
-            Escribo AI
-          </h1>
-          <p style={{
-            color: '#988361',
-            fontSize: '16px',
-            fontStyle: 'italic',
-            margin: '10px 0 0 0'
-          }}>
-            Helping every writer bring ideas to life
-          </p>
-        </div>
+          Escribo AI
+        </h1>
+        <p style={{
+          color: '#988361',
+          fontSize: '16px',
+          fontStyle: 'italic',
+          margin: '0'
+        }}>
+          Helping every writer bring ideas to life
+        </p>
       </div>
 
       {/* Main content area */}
@@ -143,15 +110,7 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ userRole }) => {
             marginBottom: '20px',
             color: '#53442D'
           }}>
-            Thank you for joining the Escribo AI waitlist! We&apos;re thrilled to have a <strong>{getRoleDescription(userRole)}</strong> enthusiast like you as part of our early community.
-          </p>
-
-          <p style={{
-            fontSize: '16px',
-            marginBottom: '20px',
-            color: '#53442D'
-          }}>
-            As someone passionate about {getRoleDescription(userRole)}, you&apos;ll be among the first to experience how Escribo AI transforms the writing process from chaotic to organized, from overwhelming to inspiring.
+            Thank you for joining the Escribo AI waitlist! As a <strong>{getRoleDescription(userRole)}</strong> enthusiast, you&apos;ll be among the first to experience how Escribo AI transforms writing from chaotic to organized.
           </p>
         </div>
 
@@ -166,22 +125,19 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ userRole }) => {
           <h3 style={{
             fontFamily: '"Avigea", Georgia, serif',
             color: '#A16631',
-            fontSize: '24px',
-            margin: '0 0 15px 0',
+            fontSize: '20px',
+            margin: '0 0 12px 0',
             fontWeight: 'normal'
           }}>
             What&apos;s Next?
           </h3>
-          <ul style={{
+          <p style={{
             color: '#53442D',
             margin: '0',
-            paddingLeft: '20px',
             fontSize: '16px'
           }}>
-            <li style={{ marginBottom: '8px' }}>We&apos;re putting the finishing touches on our revolutionary writing tools</li>
-            <li style={{ marginBottom: '8px' }}>You&apos;ll be notified as soon as early access opens</li>
-            <li style={{ marginBottom: '8px' }}>Expect exclusive previews and early-bird pricing</li>
-          </ul>
+            We&apos;re working hard on the release and will notify you as soon as it&apos;s ready!
+          </p>
         </div>
 
         {/* Inspirational quote */}
@@ -209,7 +165,7 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ userRole }) => {
           color: '#53442D',
           textAlign: 'center' as const
         }}>
-          In the meantime, keep writing and know that easier, more organized writing is just around the corner!
+          Keep writing—easier, organized writing is just around the corner!
         </p>
       </div>
 
@@ -219,25 +175,14 @@ export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ userRole }) => {
         padding: '30px 20px',
         textAlign: 'center' as const
       }}>
-        {/* Decorative divider */}
+        {/* Simple divider */}
         <div style={{
-          width: '200px',
+          width: '100px',
           height: '1px',
-          backgroundColor: 'rgba(152, 131, 97, 0.5)',
+          backgroundColor: '#988361',
           margin: '0 auto 20px auto',
-          position: 'relative' as const
-        }}>
-          <div style={{
-            position: 'absolute' as const,
-            left: '50%',
-            top: '-3px',
-            transform: 'translateX(-50%)',
-            width: '6px',
-            height: '6px',
-            backgroundColor: '#988361',
-            borderRadius: '50%'
-          }}></div>
-        </div>
+          opacity: '0.6'
+        }}></div>
 
         <p style={{
           color: '#988361',
