@@ -637,9 +637,9 @@ export default function LandingPageVintage() {
             </div>
 
             {/* Mobile - Images below button */}
-            <div className="block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6">
+            <div className="block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6 relative">
               {/* Slide 1: Chatbox images */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
                 {/* Rough chatbox - top */}
                 <div className="relative w-full h-[200px] mb-4" style={{ aspectRatio: '149/86' }}>
                   {loadingStates.roughChatbox && (
@@ -670,7 +670,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 2: Document preview */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[280px] h-[336px]">
                     {loadingStates.document && (
@@ -688,7 +688,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 3: Creative Spark imagery */}
-              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
+              <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
                 <div className="flex items-center justify-center h-[400px]">
                   <div className="relative w-[320px] h-[320px]">
                     {loadingStates.sparkImagery && (
@@ -709,7 +709,7 @@ export default function LandingPageVintage() {
             {/* Desktop - Images with slides */}
             <div className="flex-1 max-w-[700px] hidden min-[1400px]:block relative h-[750px]">
               {/* Slide 1: Chatbox images */}
-              <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
                 {/* Rough chatbox - top */}
                 <div className="absolute top-0 left-0 w-[596px] h-[344px] flex-shrink-0" style={{ aspectRatio: '149/86' }}>
                   {loadingStates.roughChatbox && (
@@ -740,7 +740,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 2: Document preview */}
-              <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="flex items-center justify-center h-full">
                   <div className="w-[500px] h-[600px] flex-shrink-0">
                     {loadingStates.document && (
@@ -758,7 +758,7 @@ export default function LandingPageVintage() {
               </div>
 
               {/* Slide 3: Creative Spark imagery */}
-              <div className={`absolute inset-0 -pt-40 transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="flex items-start justify-center h-full ">
                   <div className="w-[600px] h-[600px] flex-shrink-0">
                     {loadingStates.sparkImagery && (
