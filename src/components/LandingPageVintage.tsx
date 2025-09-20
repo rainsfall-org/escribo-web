@@ -567,7 +567,7 @@ export default function LandingPageVintage() {
             </div>
 
             {/* Mobile/Tablet Card stack animation - below button */}
-            <div className={`flex min-[1400px]:hidden relative w-[320px] md:w-[400px] h-[400px] md:h-[480px] mt-6 mx-auto transition-all duration-800 ease-out delay-1500 ${
+            <div className={`flex xl:hidden relative w-[320px] md:w-[400px] h-[400px] md:h-[480px] mt-6 mx-auto transition-all duration-800 ease-out delay-1500 ${
               revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               {/* Card 1 - Base card */}
@@ -639,7 +639,7 @@ export default function LandingPageVintage() {
           </div>
 
           {/* Desktop - Card stack animation */}
-          <div className={`hidden min-[1400px]:block relative w-[600px] h-[700px] -ml-32 transition-all duration-800 ease-out delay-1500 ${
+          <div className={`hidden xl:block relative w-[600px] h-[700px] -ml-32 transition-all duration-800 ease-out delay-1500 ${
             revolutionaryAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
           }`}>
             {/* Card 1 - Base card */}
