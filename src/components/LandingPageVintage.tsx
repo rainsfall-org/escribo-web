@@ -439,7 +439,7 @@ export default function LandingPageVintage() {
       </div>
 
       {/* About Section */}
-      <div id="about-section" className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] w-full">
+      <div id="about-section" className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] mb-[100px] w-full">
         {/* Decorative images - responsive positioning */}
         <div className={`absolute left-0 w-[20vw] h-[20vw] top-[40%] transition-all duration-1200 ease-out delay-200 ${
           aboutAnimated ? 'opacity-20 translate-x-0' : 'opacity-0 -translate-x-8'
@@ -467,7 +467,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Content container */}
-        <div className="flex items-start justify-center min-h-[700px] md:min-h-[650px] px-4 pt-[20px] md:pt-[80px] lg:pt-[120px] pb-[60px] md:pb-[50px]">
+        <div className="flex items-start justify-center min-h-[700px] md:min-h-[650px] px-4 pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[80px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
             <div className={`font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0 transition-all duration-1000 ease-out ${
               aboutAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
