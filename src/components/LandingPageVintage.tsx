@@ -100,6 +100,21 @@ function Button({
 const words = ["Writer", "Author", "Student", "Scholar", "Creator"];
 
 export default function LandingPageVintage() {
+  // Hero animation state
+  const [heroAnimated, setHeroAnimated] = useState(false);
+
+  // About section animation state
+  const [aboutAnimated, setAboutAnimated] = useState(false);
+
+  // Features section animation state
+  const [featuresAnimated, setFeaturesAnimated] = useState(false);
+
+  // Footer section animation state
+  const [footerAnimated, setFooterAnimated] = useState(false);
+
+  // Revolutionary section animation state
+  const [revolutionaryAnimated, setRevolutionaryAnimated] = useState(false);
+
   // Typewriter animation state
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -206,12 +221,102 @@ export default function LandingPageVintage() {
     });
   }, []);
 
+  // Hero animation trigger
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroAnimated(true);
+    }, 100); // Small delay to ensure DOM is ready
+    return () => clearTimeout(timer);
+  }, []);
+
+  // About section scroll animation
+  useEffect(() => {
+    const aboutSection = document.querySelector('#about-section');
+    if (!aboutSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !aboutAnimated) {
+            setAboutAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of section is visible
+    );
+
+    observer.observe(aboutSection);
+    return () => observer.disconnect();
+  }, [aboutAnimated]);
+
+  // Features section scroll animation
+  useEffect(() => {
+    const featuresSection = document.querySelector('#features-section');
+    if (!featuresSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !featuresAnimated) {
+            setFeaturesAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of section is visible
+    );
+
+    observer.observe(featuresSection);
+    return () => observer.disconnect();
+  }, [featuresAnimated]);
+
+  // Footer section scroll animation
+  useEffect(() => {
+    const footerSection = document.querySelector('#footer-section');
+    if (!footerSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !footerAnimated) {
+            setFooterAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of section is visible
+    );
+
+    observer.observe(footerSection);
+    return () => observer.disconnect();
+  }, [footerAnimated]);
+
+  // Revolutionary section scroll animation
+  useEffect(() => {
+    const revolutionarySection = document.querySelector('#revolutionary-section');
+    if (!revolutionarySection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !revolutionaryAnimated) {
+            setRevolutionaryAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of section is visible
+    );
+
+    observer.observe(revolutionarySection);
+    return () => observer.disconnect();
+  }, [revolutionaryAnimated]);
+
   return (
     <div className="bg-[#f4e7d1] relative overflow-x-hidden">
       {/* Hero Section */}
       <div className="bg-[#1c150b] h-[900px] lg:h-[1104px] relative overflow-hidden">
         {/* Decorative lamp images */}
-        <div className="absolute flex items-center justify-center left-0 size-[197px] top-[220px]">
+        <div className={`absolute flex items-center justify-center left-0 size-[197px] top-[220px] transition-all duration-1000 ease-out ${
+          heroAnimated ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-12'
+        }`}>
           <div className="flex-none rotate-[180deg] scale-y-[-100%]">
             <Image
               src={imgLantern}
@@ -222,7 +327,9 @@ export default function LandingPageVintage() {
             />
           </div>
         </div>
-        <div className="absolute right-0 size-[197px] top-[220px]">
+        <div className={`absolute right-0 size-[197px] top-[220px] transition-all duration-1000 ease-out delay-200 ${
+          heroAnimated ? 'opacity-100 rotate-0' : 'opacity-0 rotate-12'
+        }`}>
           <Image
             src={imgLantern}
             alt="Decorative lantern"
@@ -234,7 +341,9 @@ export default function LandingPageVintage() {
 
         {/* Grunge background texture */}
         <div
-          className="absolute h-full left-0 opacity-50 top-0 w-full"
+          className={`absolute h-full left-0 top-0 w-full transition-opacity duration-1500 ease-out delay-300 ${
+            heroAnimated ? 'opacity-50' : 'opacity-0'
+          }`}
           style={{
             backgroundImage: `url('${imgGrunge}')`,
             backgroundRepeat: 'repeat',
@@ -243,7 +352,9 @@ export default function LandingPageVintage() {
         />
 
         {/* Header */}
-        <div className="absolute left-0 top-0 w-full">
+        <div className={`absolute left-0 top-0 w-full transition-all duration-800 ease-out delay-100 ${
+          heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+        }`}>
           <div className="box-border content-stretch flex items-center justify-between overflow-clip px-4 md:px-[120px] py-[32px] relative w-full">
             <div className="h-[24px] relative shrink-0 w-[112px] flex items-center">
               <Image
@@ -255,8 +366,8 @@ export default function LandingPageVintage() {
               />
             </div>
             <div className="content-stretch flex gap-[12px] items-center justify-start relative shrink-0">
-              <div className="bg-[#988361] box-border content-stretch flex gap-[10px] items-center justify-center px-[48px] py-[18px] relative rounded-[41px] shrink-0 w-[180px] h-[60px]">
-                <Button buttonText="Get Started" property1="Secondary" />
+              <div className="bg-[#988361] box-border content-stretch flex gap-[10px] items-center justify-center px-[36px] py-[14px] relative rounded-[41px] shrink-0 w-[160px] h-[52px]">
+                <Button buttonText="Sign in" property1="Secondary" />
               </div>
             </div>
           </div>
@@ -264,12 +375,18 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Main hero content */}
-        <div className="absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] lg:max-w-[900px] xl:max-w-[850px] px-4">
+        <div className={`absolute content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start top-[150px] md:top-[279px] left-1/2 translate-x-[-50%] w-full max-w-[90vw] lg:max-w-[900px] xl:max-w-[850px] px-4 transition-all duration-1000 ease-out delay-500 ${
+          heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <div className="content-stretch flex flex-col gap-[12px] md:gap-[20px] items-start justify-start leading-[0] relative shrink-0 text-center w-full">
-            <div className="font-montserrat font-normal relative shrink-0 text-[#f4e7d1] text-[16px] md:text-[20px] w-full">
+            <div className={`font-montserrat font-normal relative shrink-0 text-[#f4e7d1] text-[16px] md:text-[20px] w-full transition-all duration-800 ease-out delay-600 ${
+              heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               <p className="leading-[normal]">ESCRIBO AI</p>
             </div>
-            <div className="flex flex-col font-avigea justify-center not-italic relative shrink-0 text-[#1c150b] text-[0px] w-full">
+            <div className={`flex flex-col font-avigea justify-center not-italic relative shrink-0 text-[#1c150b] text-[0px] w-full transition-all duration-800 ease-out delay-700 ${
+              heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               <div className="leading-[1.15] text-[22px] sm:text-[28px] md:text-[60px] text-center" style={{ lineHeight: '115%', letterSpacing: '0%' }}>
                 <span className="font-avigea text-[#f4e7d1]" style={{ fontWeight: 400, fontStyle: 'normal' }}>Helping every </span>
                 <span className="font-avigea italic text-[#988361]" style={{ fontWeight: 400, fontStyle: 'italic' }}>
@@ -293,13 +410,17 @@ export default function LandingPageVintage() {
               </div>
             </div>
           </div>
-          <div className="bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px]">
+          <div className={`bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px] transition-all duration-800 ease-out delay-900 hover:bg-[#8a5529] ${
+            heroAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
+          }`}>
             <Button buttonText="Get Started" />
           </div>
         </div>
 
         {/* Handwritten banner image */}
-        <div className="absolute top-[200px] bottom-[100px] left-0 right-0 w-full block pointer-events-none overflow-hidden">
+        <div className={`absolute top-[200px] bottom-[100px] left-0 right-0 w-full block pointer-events-none overflow-hidden transition-all duration-1200 ease-out delay-800 ${
+          heroAnimated ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}>
           <Image
             src="/handwritten-banner.png"
             alt="Handwritten banner text"
@@ -310,49 +431,69 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Large "Escribo AI" text at bottom */}
-        <div className="absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[60px] sm:text-[80px] md:text-[200px] lg:text-[320px] text-nowrap z-10" style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
+        <div className={`absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[60px] sm:text-[80px] md:text-[200px] lg:text-[320px] text-nowrap z-10 transition-all duration-1000 ease-out delay-1000 ${
+          heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`} style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
           <p className="whitespace-pre">Escribo AI</p>
         </div>
       </div>
 
       {/* About Section */}
-      <div className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] w-full">
+      <div id="about-section" className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] w-full">
         {/* Decorative images - responsive positioning */}
-        <div className="absolute left-0 opacity-20 w-[20vw] h-[20vw] top-[40%]">
+        <div className={`absolute left-0 w-[20vw] h-[20vw] top-[40%] transition-all duration-1200 ease-out delay-200 ${
+          aboutAnimated ? 'opacity-20 translate-x-0' : 'opacity-0 -translate-x-8'
+        }`}>
           <Image
             src={imgAboutLeft}
             alt="Decorative element"
             fill
             className="object-contain"
+            loading="lazy"
+            sizes="20vw"
           />
         </div>
-        <div className="absolute right-0 opacity-5 w-[25vw] h-[25vw] top-[10%]">
+        <div className={`absolute right-0 w-[25vw] h-[25vw] top-[10%] transition-all duration-1200 ease-out delay-600 ${
+          aboutAnimated ? 'opacity-5 translate-x-0' : 'opacity-0 translate-x-8'
+        }`}>
           <Image
             src={imgAboutRight}
             alt="Decorative element"
             fill
             className="object-contain"
+            loading="lazy"
+            sizes="25vw"
           />
         </div>
 
         {/* Content container */}
         <div className="flex items-start justify-center min-h-[700px] md:min-h-[650px] px-4 pt-[20px] md:pt-[80px] lg:pt-[120px] pb-[60px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
-            <div className="font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0">
+            <div className={`font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0 transition-all duration-1000 ease-out ${
+              aboutAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+            }`}>
               <p className="leading-[normal] whitespace-pre">About</p>
             </div>
-            <div className="leading-[normal] text-[16px] md:text-[20px] lg:text-[24px] tracking-[-0.5px] md:tracking-[-0.72px] max-w-[554px] text-center lg:text-left">
-              <p className="font-montserrat font-medium mb-0 text-[rgba(161,102,49,0.5)]">
+            <div className={`leading-[normal] text-[16px] md:text-[20px] lg:text-[24px] tracking-[-0.5px] md:tracking-[-0.72px] max-w-[554px] text-center lg:text-left transition-all duration-800 ease-out delay-400 ${
+              aboutAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}>
+              <p className={`font-montserrat font-medium mb-0 text-[rgba(161,102,49,0.5)] transition-all duration-600 ease-out delay-600 ${
+                aboutAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
                 Writing a book can feel like chaos—messy notes, half-finished drafts, and moments of staring at a blank page.
               </p>
-              <p className="mb-0">
+              <p className={`mb-0 transition-all duration-600 ease-out delay-800 ${
+                aboutAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
                 <br />
                 <span className="font-montserrat font-semibold text-[#a16631]">Escribo AI</span>
                 <span className="font-montserrat font-medium text-[rgba(161,102,49,0.7)]">
                   {` turns that chaos into clarity, giving you the tools to organize your story, stay motivated, and keep moving forward.`}
                 </span>
               </p>
-              <p className="font-montserrat font-medium text-[rgba(161,102,49,0.7)]">
+              <p className={`font-montserrat font-medium text-[rgba(161,102,49,0.7)] transition-all duration-600 ease-out delay-1000 ${
+                aboutAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
                 <br />
                 Our mission is simple: make the journey of writing not just easier, but inspiring.
               </p>
@@ -363,6 +504,7 @@ export default function LandingPageVintage() {
 
       {/* Revolutionary Stuff Section */}
       <div
+        id="revolutionary-section"
         className="relative w-full h-[1600px] md:h-[1480px] lg:h-[1280px] z-20 -mt-[200px] -mb-[200px]"
         style={{
           backgroundImage: `url('${imgPaper1}')`,
@@ -372,42 +514,62 @@ export default function LandingPageVintage() {
         }}
       >
         {/* Feather decoration - Left */}
-        <div className="absolute -left-40 -top-20  w-[800px] h-[800px] flex-shrink-0" style={{  aspectRatio: '552.64/552.64' }}>
+        <div className={`absolute -left-40 -top-20 w-[800px] h-[800px] flex-shrink-0 transition-all duration-1200 ease-out delay-300 ${
+          revolutionaryAnimated ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 -translate-x-12 -rotate-12'
+        }`} style={{ aspectRatio: '552.64/552.64' }}>
           <Image
             src={imgFeather}
             alt="Decorative feather"
             fill
             className="object-contain"
+            loading="lazy"
+            sizes="(max-width: 768px) 60vw, 800px"
           />
         </div>
 
         {/* Feather decoration - Right */}
-        <div className="absolute -right-36 top-[600px] min-[1400px]:top-[440px] w-[900px] h-[900px] flex-shrink-0" style={{ aspectRatio: '552.64/552.64' }}>
+        <div className={`absolute -right-36 top-[600px] min-[1400px]:top-[440px] w-[900px] h-[900px] flex-shrink-0 transition-all duration-1200 ease-out delay-600 ${
+          revolutionaryAnimated ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 translate-x-12 rotate-12'
+        }`} style={{ aspectRatio: '552.64/552.64' }}>
           <Image
             src={imgFeather2}
             alt="Decorative feather"
             fill
             className="object-contain"
+            loading="lazy"
+            sizes="(max-width: 768px) 70vw, 900px"
           />
         </div>
         {/* Content */}
         <div className="absolute inset-0 flex flex-col xl:flex-row items-center justify-center xl:justify-between px-4 md:px-8 lg:px-[120px] pt-[20px] md:pt-[40px] lg:pt-[60px] pb-[40px] md:pb-[60px] lg:pb-[100px] gap-6 xl:gap-0">
           {/* Left side - Text content */}
-          <div className="content-stretch flex flex-col gap-[30px] xl:gap-[80px] items-center xl:items-start justify-start relative max-w-[505px] text-center xl:text-left">
-            <div className="content-stretch flex flex-col gap-[16px] xl:gap-[24px] items-center xl:items-start justify-center leading-[0] relative shrink-0 text-[#53442d]">
-              <div className="font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] xl:text-[80px] w-full">
+          <div className={`content-stretch flex flex-col gap-[30px] xl:gap-[80px] items-center xl:items-start justify-start relative max-w-[505px] text-center xl:text-left transition-all duration-800 ease-out delay-500 ${
+            revolutionaryAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+          }`}>
+            <div className={`content-stretch flex flex-col gap-[16px] xl:gap-[24px] items-center xl:items-start justify-center leading-[0] relative shrink-0 text-[#53442d] transition-all duration-600 ease-out delay-700 ${
+              revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}>
+              <div className={`font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] xl:text-[80px] w-full transition-all duration-600 ease-out delay-900 ${
+                revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
                 <p className="leading-[1.15]">Revolutionary Stuff</p>
               </div>
-              <div className="font-montserrat font-normal relative shrink-0 text-[16px] md:text-[20px]">
+              <div className={`font-montserrat font-normal relative shrink-0 text-[16px] md:text-[20px] transition-all duration-600 ease-out delay-1100 ${
+                revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
                 <p className="leading-[normal]">& so much more!</p>
               </div>
             </div>
-            <div className="shrink-0 w-[160px] xl:w-[180px] h-[50px] xl:h-[60px]">
+            <div className={`shrink-0 w-[160px] xl:w-[180px] h-[50px] xl:h-[60px] transition-all duration-600 ease-out delay-1300 ${
+              revolutionaryAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
+            }`}>
               <Button buttonText="Try Now" property1="Secondary" property2="Outline" />
             </div>
 
             {/* Mobile/Tablet Card stack animation - below button */}
-            <div className="flex min-[1400px]:hidden relative w-[320px] md:w-[400px] h-[400px] md:h-[480px] mt-6 mx-auto">
+            <div className={`flex min-[1400px]:hidden relative w-[320px] md:w-[400px] h-[400px] md:h-[480px] mt-6 mx-auto transition-all duration-800 ease-out delay-1500 ${
+              revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
               {/* Card 1 - Base card */}
               <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[360px] md:h-[432px] transition-all duration-700 ease-in-out z-10">
                 {loadingStates.card1 && (
@@ -420,7 +582,8 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 1"
                   fill
                   className="object-contain"
-                  priority
+                  loading="lazy"
+                  sizes="(max-width: 768px) 300px, 360px"
                   onLoad={() => handleImageLoad('card1')}
                 />
               </div>
@@ -443,7 +606,8 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 2"
                   fill
                   className="object-contain"
-                  priority
+                  loading="lazy"
+                  sizes="(max-width: 768px) 300px, 360px"
                   onLoad={() => handleImageLoad('card2')}
                 />
               </div>
@@ -466,7 +630,8 @@ export default function LandingPageVintage() {
                   alt="Revolutionary feature card 3"
                   fill
                   className="object-contain"
-                  priority
+                  loading="lazy"
+                  sizes="(max-width: 768px) 300px, 360px"
                   onLoad={() => handleImageLoad('card3')}
                 />
               </div>
@@ -474,7 +639,9 @@ export default function LandingPageVintage() {
           </div>
 
           {/* Desktop - Card stack animation */}
-          <div className="hidden min-[1400px]:block relative w-[600px] h-[700px] -ml-32">
+          <div className={`hidden min-[1400px]:block relative w-[600px] h-[700px] -ml-32 transition-all duration-800 ease-out delay-1500 ${
+            revolutionaryAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+          }`}>
             {/* Card 1 - Base card */}
             <div className="absolute top-0 -left-30 w-[500px] h-[600px] transition-all duration-700 ease-in-out z-10">
               {loadingStates.card1 && (
@@ -487,7 +654,8 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 1"
                 fill
                 className="object-contain"
-                priority
+                loading="lazy"
+                sizes="500px"
                 onLoad={() => handleImageLoad('card1')}
               />
             </div>
@@ -510,7 +678,8 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 2"
                 fill
                 className="object-contain"
-                priority
+                loading="lazy"
+                sizes="500px"
                 onLoad={() => handleImageLoad('card2')}
               />
             </div>
@@ -533,7 +702,8 @@ export default function LandingPageVintage() {
                 alt="Revolutionary feature card 3"
                 fill
                 className="object-contain"
-                priority
+                loading="lazy"
+                sizes="500px"
                 onLoad={() => handleImageLoad('card3')}
               />
             </div>
@@ -542,10 +712,12 @@ export default function LandingPageVintage() {
       </div>
 
       {/* Burnt Orange Section */}
-      <div className="relative w-full h-[1400px] md:h-[1300px] min-[1400px]:h-[1200px] bg-[#A16631]">
+      <div id="features-section" className="relative w-full h-[1400px] md:h-[1300px] min-[1400px]:h-[1200px] bg-[#A16631]">
         {/* Dust texture overlay */}
         <div
-          className="absolute inset-0 w-full h-full opacity-30"
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1500 ease-out delay-300 ${
+            featuresAnimated ? 'opacity-30' : 'opacity-0'
+          }`}
           style={{
             backgroundImage: `url('/dust.png')`,
             backgroundRepeat: 'repeat',
@@ -554,7 +726,9 @@ export default function LandingPageVintage() {
         />
 
         {/* Features label - centered at top */}
-        <div className="absolute top-20 md:top-25 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center">
+        <div className={`absolute top-20 md:top-25 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center transition-all duration-1000 ease-out ${
+          featuresAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           Features
         </div>
 
@@ -562,7 +736,9 @@ export default function LandingPageVintage() {
         <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-[120px] pt-[60px] md:pt-[80px] pb-[40px] md:pb-[60px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center lg:items-start justify-center max-w-7xl w-full">
             {/* Left side - Text content with slides */}
-            <div className="flex-1 max-w-[600px] relative">
+            <div className={`flex-1 max-w-[600px] relative transition-all duration-800 ease-out delay-500 ${
+              featuresAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+            }`}>
               {/* Slide 1: Binder & Outliner */}
               <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}>
                 {/* Main heading */}
@@ -637,7 +813,9 @@ export default function LandingPageVintage() {
             </div>
 
             {/* Mobile - Images below button */}
-            <div className="block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6 relative">
+            <div className={`block min-[1400px]:hidden w-full max-w-[400px] mx-auto mt-6 relative transition-all duration-800 ease-out delay-700 ${
+              featuresAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
               {/* Slide 1: Chatbox images */}
               <div className={`transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 w-full'}`}>
                 {/* Rough chatbox - top */}
@@ -650,6 +828,8 @@ export default function LandingPageVintage() {
                     alt="Paste your Rough Draft or Story Idea"
                     fill
                     className="object-contain"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 90vw, 596px"
                     onLoad={() => handleImageLoad('roughChatbox')}
                   />
                 </div>
@@ -664,6 +844,8 @@ export default function LandingPageVintage() {
                     alt="AI will automatically create organized chapters"
                     fill
                     className="object-contain"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 90vw, 595px"
                     onLoad={() => handleImageLoad('refinedChatbox')}
                   />
                 </div>
@@ -681,6 +863,8 @@ export default function LandingPageVintage() {
                       alt="Book preview with formatted pages"
                       fill
                       className="object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 280px, 500px"
                       onLoad={() => handleImageLoad('document')}
                     />
                   </div>
@@ -699,6 +883,8 @@ export default function LandingPageVintage() {
                       alt="Creative spark illustration with structure banner and spiral designs"
                       fill
                       className="object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 320px, 600px"
                       onLoad={() => handleImageLoad('sparkImagery')}
                     />
                   </div>
@@ -707,7 +893,9 @@ export default function LandingPageVintage() {
             </div>
 
             {/* Desktop - Images with slides */}
-            <div className="flex-1 max-w-[700px] hidden min-[1400px]:block relative h-[750px]">
+            <div className={`flex-1 max-w-[700px] hidden min-[1400px]:block relative h-[750px] transition-all duration-800 ease-out delay-700 ${
+              featuresAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            }`}>
               {/* Slide 1: Chatbox images */}
               <div className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
                 {/* Rough chatbox - top */}
@@ -720,6 +908,8 @@ export default function LandingPageVintage() {
                     alt="Paste your Rough Draft or Story Idea"
                     fill
                     className="object-contain"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 90vw, 596px"
                     onLoad={() => handleImageLoad('roughChatbox')}
                   />
                 </div>
@@ -734,6 +924,8 @@ export default function LandingPageVintage() {
                     alt="AI will automatically create organized chapters"
                     fill
                     className="object-contain"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 90vw, 595px"
                     onLoad={() => handleImageLoad('refinedChatbox')}
                   />
                 </div>
@@ -751,6 +943,8 @@ export default function LandingPageVintage() {
                       alt="Book preview with formatted pages"
                       fill
                       className="object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 280px, 500px"
                       onLoad={() => handleImageLoad('document')}
                     />
                   </div>
@@ -769,6 +963,8 @@ export default function LandingPageVintage() {
                       alt="Creative spark illustration with structure banner and spiral designs"
                       fill
                       className="object-contain"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 320px, 600px"
                       onLoad={() => handleImageLoad('sparkImagery')}
                     />
                   </div>
@@ -815,6 +1011,8 @@ export default function LandingPageVintage() {
                 alt="Decorative book"
                 fill
                 className="object-contain"
+                loading="lazy"
+                sizes="(max-width: 1024px) 200px, 197px"
               />
             </div>
 
@@ -828,6 +1026,8 @@ export default function LandingPageVintage() {
                 alt="Decorative book"
                 fill
                 className="object-contain"
+                loading="lazy"
+                sizes="(max-width: 1024px) 200px, 349px"
               />
             </div>
 
@@ -938,7 +1138,7 @@ export default function LandingPageVintage() {
       </div>
 
       {/* Footer Section */}
-      <div className="relative w-full h-[1000px] -mt-[200px]">
+      <div id="footer-section" className="relative w-full h-[1000px] -mt-[200px]">
         {/* Background paper texture */}
         <div
           className="absolute inset-0 w-full h-full"
@@ -951,7 +1151,9 @@ export default function LandingPageVintage() {
 
         {/* Decorative lamps */}
         {/* Left lamp */}
-        <div className="absolute flex items-center justify-center left-0 size-[197px] top-[270px] z-10">
+        <div className={`absolute flex items-center justify-center left-0 size-[197px] top-[270px] z-10 transition-all duration-1000 ease-out delay-300 ${
+          footerAnimated ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-12'
+        }`}>
           <div className="flex-none rotate-[180deg] scale-y-[-100%]">
             <Image
               src={imgLantern}
@@ -959,100 +1161,132 @@ export default function LandingPageVintage() {
               width={197}
               height={197}
               className="object-contain"
+              loading="lazy"
+              sizes="197px"
             />
           </div>
         </div>
 
         {/* Right lamp */}
-        <div className="absolute right-[0px] size-[197px] top-[200px]">
+        <div className={`absolute right-[0px] size-[197px] top-[200px] transition-all duration-1000 ease-out delay-500 ${
+          footerAnimated ? 'opacity-100 rotate-0' : 'opacity-0 rotate-12'
+        }`}>
           <Image
             src={imgLantern}
             alt="Decorative lantern"
             width={197}
             height={197}
             className="object-contain"
+            loading="lazy"
+            sizes="197px"
           />
         </div>
 
         {/* Footer Content */}
         <div className="absolute bottom-0 content-stretch flex flex-col gap-[40px] md:gap-[60px] items-center justify-start py-[40px] md:py-[60px] px-4 w-full z-20">
           {/* Banner Text */}
-          <div className="content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start relative shrink-0 w-full max-w-[1028px]">
-            <div className="font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[20px] sm:text-[28px] md:text-[50px] lg:text-[70px] text-center w-full">
+          <div className={`content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-start relative shrink-0 w-full max-w-[1028px] transition-all duration-800 ease-out delay-600 ${
+            footerAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            <div className={`font-avigea leading-[1.15] not-italic relative shrink-0 text-[#f4e7d1] text-[20px] sm:text-[28px] md:text-[50px] lg:text-[70px] text-center w-full transition-all duration-600 ease-out delay-800 ${
+              footerAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               <p>Ready to write without limits?<br />Start Today!</p>
             </div>
-            <div className="bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px]">
+            <div className={`bg-[#a16631] box-border content-stretch flex gap-[10px] items-center justify-center px-[32px] md:px-[48px] py-[14px] md:py-[18px] relative rounded-[41px] shrink-0 w-[140px] md:w-[180px] h-[48px] md:h-[60px] transition-all duration-600 ease-out delay-1000 hover:bg-[#8a5529] ${
+              footerAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
+            }`}>
               <Button buttonText="Register" />
             </div>
           </div>
 
           {/* Footer Divider */}
-          <div className="h-[56px] relative shrink-0 w-full max-w-[1150px]">
+          <div className={`h-[56px] relative shrink-0 w-full max-w-[1150px] transition-all duration-800 ease-out delay-1200 ${
+            footerAnimated ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          }`}>
             <Image
               alt="Footer divider"
               src={imgFooterDivider}
               fill
               className="object-contain"
+              loading="lazy"
+              sizes="(max-width: 768px) 90vw, 1150px"
             />
           </div>
 
           {/* Footer Bottom */}
-          <div className="content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center justify-start relative shrink-0 w-full max-w-[1028px]">
+          <div className={`content-stretch flex flex-col gap-[40px] md:gap-[64px] items-center justify-start relative shrink-0 w-full max-w-[1028px] transition-all duration-600 ease-out delay-1400 ${
+            footerAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>
             <div className="content-stretch flex flex-col gap-[20px] md:gap-[32px] items-center justify-center relative shrink-0 w-full">
               {/* Logo */}
-              <div className="h-[32px] md:h-[53px] relative shrink-0 w-[150px] md:w-[254px]">
+              <div className={`h-[32px] md:h-[53px] relative shrink-0 w-[150px] md:w-[254px] transition-all duration-600 ease-out delay-1600 ${
+                footerAnimated ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+              }`}>
                 <Image
                   alt="Escribo Logo"
                   src={imgEscriboLogo}
                   width={254}
                   height={53}
                   className="block max-w-none size-full"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 150px, 254px"
                 />
               </div>
 
               {/* Social Icons */}
-              <div className="content-stretch flex items-center justify-between relative shrink-0 w-[200px] md:w-[254px]">
-                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)]">
-                  <div className="overflow-clip relative shrink-0 size-[24px]">
+              <div className={`content-stretch flex items-center justify-between relative shrink-0 w-[200px] md:w-[254px] transition-all duration-600 ease-out delay-1800 ${
+                footerAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)] cursor-pointer transition-all duration-300 ease-out hover:bg-[#988361] hover:border-[#988361] hover:scale-110 overflow-hidden group">
+                  <div className="overflow-clip relative shrink-0 size-[24px] z-10">
                     <Image
                       alt="Instagram"
                       src={imgInstagram}
                       width={24}
                       height={24}
-                      className="block max-w-none size-full"
+                      className="block max-w-none size-full transition-all duration-300 group-hover:filter group-hover:brightness-0 group-hover:invert-[1]"
+                      loading="lazy"
+                      sizes="24px"
                     />
                   </div>
                 </div>
-                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)]">
-                  <div className="overflow-clip relative shrink-0 size-[24px]">
+                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)] cursor-pointer transition-all duration-300 ease-out hover:bg-[#988361] hover:border-[#988361] hover:scale-110 overflow-hidden group">
+                  <div className="overflow-clip relative shrink-0 size-[24px] z-10">
                     <Image
                       alt="LinkedIn"
                       src={imgLinkedin}
                       width={24}
                       height={24}
-                      className="block max-w-none size-full"
+                      className="block max-w-none size-full transition-all duration-300 group-hover:filter group-hover:brightness-0 group-hover:invert-[1]"
+                      loading="lazy"
+                      sizes="24px"
                     />
                   </div>
                 </div>
-                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)]">
-                  <div className="overflow-clip relative shrink-0 size-[24px]">
+                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)] cursor-pointer transition-all duration-300 ease-out hover:bg-[#988361] hover:border-[#988361] hover:scale-110 overflow-hidden group">
+                  <div className="overflow-clip relative shrink-0 size-[24px] z-10">
                     <Image
                       alt="Facebook"
                       src={imgFacebook}
                       width={24}
                       height={24}
-                      className="block max-w-none size-full"
+                      className="block max-w-none size-full transition-all duration-300 group-hover:filter group-hover:brightness-0 group-hover:invert-[1]"
+                      loading="lazy"
+                      sizes="24px"
                     />
                   </div>
                 </div>
-                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)]">
-                  <div className="overflow-clip relative shrink-0 size-[24px]">
+                <div className="box-border content-stretch flex gap-[10px] items-center justify-start p-[10px] relative rounded-[10px] shrink-0 border border-[rgba(244,231,209,0.25)] cursor-pointer transition-all duration-300 ease-out hover:bg-[#988361] hover:border-[#988361] hover:scale-110 overflow-hidden group">
+                  <div className="overflow-clip relative shrink-0 size-[24px] z-10">
                     <Image
                       alt="Twitter"
                       src={imgTwitter}
                       width={24}
                       height={24}
-                      className="block max-w-none size-full"
+                      className="block max-w-none size-full transition-all duration-300 group-hover:filter group-hover:brightness-0 group-hover:invert-[1]"
+                      loading="lazy"
+                      sizes="24px"
                     />
                   </div>
                 </div>
@@ -1060,7 +1294,9 @@ export default function LandingPageVintage() {
             </div>
 
             {/* Copyright */}
-            <div className="font-montserrat font-normal leading-[0] relative shrink-0 text-[#f4e7d1] text-[12px] md:text-[16px] text-center w-full">
+            <div className={`font-montserrat font-normal leading-[0] relative shrink-0 text-[#f4e7d1] text-[12px] md:text-[16px] text-center w-full transition-all duration-600 ease-out delay-2000 ${
+              footerAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
               <p className="leading-[normal]">Copyrights @EscriboAI 2025. All Rights Reserved.</p>
             </div>
           </div>
