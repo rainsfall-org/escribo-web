@@ -323,7 +323,8 @@ export default function LandingPageVintage() {
               alt="Decorative lantern"
               width={197}
               height={197}
-              className="object-contain"
+              className="object-contain select-none"
+              draggable={false}
             />
           </div>
         </div>
@@ -431,7 +432,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Large "Escribo AI" text at bottom */}
-        <div className={`absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[60px] sm:text-[80px] md:text-[200px] lg:text-[320px] text-nowrap z-10 transition-all duration-1000 ease-out delay-1000 ${
+        <div className={`absolute bottom-[20px] md:bottom-[-4px] lg:bottom-[-25px] left-1/2 transform -translate-x-1/2 font-avigea not-italic text-[#F4E7D1] text-[60px] sm:text-[80px] md:text-[200px] lg:text-[320px] text-nowrap z-10 transition-all duration-1000 ease-out delay-1000 select-none ${
           heroAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`} style={{ lineHeight: '100%', letterSpacing: '0%', fontWeight: 400, fontStyle: 'normal' }}>
           <p className="whitespace-pre">Escribo AI</p>
@@ -441,35 +442,37 @@ export default function LandingPageVintage() {
       {/* About Section */}
       <div id="about-section" className="bg-[#f4e7d1] min-h-[600px] relative overflow-hidden -mt-[60px] mb-[100px] w-full">
         {/* Decorative images - responsive positioning */}
-        <div className={`absolute left-0 w-[20vw] h-[20vw] top-[40%] transition-all duration-1200 ease-out delay-200 ${
+        <div className={`absolute left-0 w-[20vw] h-[20vw] top-[40%] transition-all duration-1200 ease-out delay-200 select-none ${
           aboutAnimated ? 'opacity-20 translate-x-0' : 'opacity-0 -translate-x-8'
         }`}>
           <Image
             src={imgAboutLeft}
             alt="Decorative element"
             fill
-            className="object-contain"
+            className="object-contain select-none"
             loading="lazy"
             sizes="20vw"
+            draggable={false}
           />
         </div>
-        <div className={`absolute right-0 w-[25vw] h-[25vw] top-[10%] transition-all duration-1200 ease-out delay-600 ${
+        <div className={`absolute right-0 w-[25vw] h-[25vw] top-[10%] transition-all duration-1200 ease-out delay-600 select-none ${
           aboutAnimated ? 'opacity-5 translate-x-0' : 'opacity-0 translate-x-8'
         }`}>
           <Image
             src={imgAboutRight}
             alt="Decorative element"
             fill
-            className="object-contain"
+            className="object-contain select-none"
             loading="lazy"
             sizes="25vw"
+            draggable={false}
           />
         </div>
 
         {/* Content container */}
         <div className="flex items-start justify-center min-h-[700px] md:min-h-[650px] px-4 pt-[60px] md:pt-[80px] lg:pt-[120px] pb-[120px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
-            <div className={`font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0 transition-all duration-1000 ease-out ${
+            <div className={`font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0 transition-all duration-1000 ease-out select-none ${
               aboutAnimated ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
             }`}>
               <p className="leading-[normal] whitespace-pre">About</p>
@@ -521,22 +524,24 @@ export default function LandingPageVintage() {
             src={imgFeather}
             alt="Decorative feather"
             fill
-            className="object-contain"
+            className="object-contain select-none"
             loading="lazy"
+            draggable={false}
             sizes="(max-width: 768px) 60vw, 800px"
           />
         </div>
 
         {/* Feather decoration - Right */}
-        <div className={`absolute -right-36 top-[600px] min-[1400px]:top-[440px] w-[900px] h-[900px] flex-shrink-0 transition-all duration-1200 ease-out delay-600 ${
+        <div className={`absolute -right-36 bottom-[0px] w-[900px] h-[900px] flex-shrink-0 transition-all duration-1200 ease-out delay-600 ${
           revolutionaryAnimated ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 translate-x-12 rotate-12'
         }`} style={{ aspectRatio: '552.64/552.64' }}>
           <Image
             src={imgFeather2}
             alt="Decorative feather"
             fill
-            className="object-contain"
+            className="object-contain select-none"
             loading="lazy"
+            draggable={false}
             sizes="(max-width: 768px) 70vw, 900px"
           />
         </div>
@@ -549,7 +554,7 @@ export default function LandingPageVintage() {
             <div className={`content-stretch flex flex-col gap-[16px] xl:gap-[24px] items-center xl:items-start justify-center leading-[0] relative shrink-0 text-[#53442d] transition-all duration-600 ease-out delay-700 ${
               revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}>
-              <div className={`font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] xl:text-[80px] w-full transition-all duration-600 ease-out delay-900 ${
+              <div className={`font-avigea not-italic relative shrink-0 text-[40px] md:text-[60px] xl:text-[80px] w-full transition-all duration-600 ease-out delay-900 select-none ${
                 revolutionaryAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <p className="leading-[1.15]">Revolutionary Stuff</p>
@@ -726,7 +731,7 @@ export default function LandingPageVintage() {
         />
 
         {/* Features label - centered at top */}
-        <div className={`absolute top-20 md:top-25 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center transition-all duration-1000 ease-out ${
+        <div className={`absolute top-20 md:top-25 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-[rgba(244,231,209,0.1)] text-center transition-all duration-1000 ease-out select-none ${
           featuresAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           Features
@@ -986,7 +991,7 @@ export default function LandingPageVintage() {
         }}
       >
         {/* FAQ heading - centered at top */}
-        <div className="absolute top-10 md:top-15 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-center" style={{ color: 'rgba(161, 99, 49, 0.1)' }}>
+        <div className="absolute top-10 md:top-15 left-1/2 transform -translate-x-1/2 font-avigea text-[60px] md:text-[120px] lg:text-[200px] leading-[1.15] text-center select-none" style={{ color: 'rgba(161, 99, 49, 0.1)' }}>
           FAQs
         </div>
 
@@ -1160,7 +1165,8 @@ export default function LandingPageVintage() {
               alt="Decorative lantern"
               width={197}
               height={197}
-              className="object-contain"
+              className="object-contain select-none"
+              draggable={false}
               loading="lazy"
               sizes="197px"
             />
@@ -1176,8 +1182,9 @@ export default function LandingPageVintage() {
             alt="Decorative lantern"
             width={197}
             height={197}
-            className="object-contain"
+            className="object-contain select-none"
             loading="lazy"
+            draggable={false}
             sizes="197px"
           />
         </div>
