@@ -336,7 +336,7 @@ export default function LandingPageVintage() {
         </div>
 
         {/* Content container */}
-        <div className="flex items-start justify-center min-h-[550px] md:min-h-[650px] px-4 pt-[30px] md:pt-[80px] lg:pt-[120px] pb-[40px] md:pb-[50px]">
+        <div className="flex items-start justify-center min-h-[700px] md:min-h-[650px] px-4 pt-[20px] md:pt-[80px] lg:pt-[120px] pb-[60px] md:pb-[50px]">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-[124px] items-center justify-center max-w-7xl w-full">
             <div className="font-avigea text-[60px] md:text-[120px] lg:text-[200px] text-[rgba(161,102,49,0.1)] text-center tracking-[-3px] md:tracking-[-6px] shrink-0">
               <p className="leading-[normal] whitespace-pre">About</p>
