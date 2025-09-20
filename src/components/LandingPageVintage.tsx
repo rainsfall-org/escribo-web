@@ -399,7 +399,9 @@ export default function LandingPageVintage() {
               {/* Card 1 - Base card */}
               <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[360px] md:h-[432px] transition-all duration-700 ease-in-out z-10">
                 {loadingStates.card1 && (
-                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[360px] md:h-[432px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                    <VintageLoader />
+                  </div>
                 )}
                 <Image
                   src={imgCard1}
@@ -419,7 +421,9 @@ export default function LandingPageVintage() {
                 }`}
               >
                 {loadingStates.card2 && (
-                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[384px] md:h-[461px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                    <VintageLoader />
+                  </div>
                 )}
                 <Image
                   src={imgCard2}
@@ -439,7 +443,9 @@ export default function LandingPageVintage() {
                 }`}
               >
                 {loadingStates.card3 && (
-                  <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                  <div className="absolute top-0 left-0 w-[300px] md:w-[360px] h-[384px] md:h-[461px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                    <VintageLoader />
+                  </div>
                 )}
                 <Image
                   src={imgCard3}
@@ -457,7 +463,9 @@ export default function LandingPageVintage() {
             {/* Card 1 - Base card */}
             <div className="absolute top-0 -left-30 w-[500px] h-[600px] transition-all duration-700 ease-in-out z-10">
               {loadingStates.card1 && (
-                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                <div className="absolute top-0 left-0 w-[500px] h-[600px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <VintageLoader />
+                </div>
               )}
               <Image
                 src={imgCard1}
@@ -477,7 +485,9 @@ export default function LandingPageVintage() {
               }`}
             >
               {loadingStates.card2 && (
-                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                <div className="absolute top-0 left-0 w-[500px] h-[640px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <VintageLoader />
+                </div>
               )}
               <Image
                 src={imgCard2}
@@ -497,7 +507,9 @@ export default function LandingPageVintage() {
               }`}
             >
               {loadingStates.card3 && (
-                <VintageLoader className="absolute inset-0 bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg" />
+                <div className="absolute top-0 left-0 w-[500px] h-[640px] bg-[#f4e7d1] bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <VintageLoader />
+                </div>
               )}
               <Image
                 src={imgCard3}
